@@ -1303,13 +1303,14 @@ static int nixge_probe(struct platform_device *pdev)
 	ndev->min_mtu = 64;
 	ndev->max_mtu = NIXGE_JUMBO_MTU;
 
-	mac_addr = nixge_get_nvmem_address(&pdev->dev);
+	/*mac_addr = nixge_get_nvmem_address(&pdev->dev);
 	if (mac_addr && is_valid_ether_addr(mac_addr)) {
 		ether_addr_copy(ndev->dev_addr, mac_addr);
 		kfree(mac_addr);
 	} else {
 		eth_hw_addr_random(ndev);
-	}
+	}*/
+	eth_hw_addr_random(ndev);
 
 	priv = netdev_priv(ndev);
 	priv->ndev = ndev;
